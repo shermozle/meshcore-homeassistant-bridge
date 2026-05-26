@@ -1,7 +1,8 @@
 # meshcore-homeassistant-bridge
 
 A **Meshcore Companion bot** that bridges direct messages on your LoRa mesh
-network to **Home Assistant** commands.  Connects to your
+network to **Home Assistant** commands. Runs as a companion client connected to
+[pyMC_Repeater](https://github.com/pyMC-dev/pyMC_Repeater)'s CompanionFrameServer.  Connects to your
 [pyMC_Repeater](https://github.com/pyMC-dev/pyMC_Repeater) instance over TCP,
 authenticates senders by public key, and exposes a keyword-based command interface
 for controlling lights, switches, climate, and querying entity states.
