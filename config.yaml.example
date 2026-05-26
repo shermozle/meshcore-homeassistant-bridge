@@ -1,0 +1,35 @@
+# ── Meshcore connection ───────────────────────────────────────────
+meshcore:
+  # Transport: "tcp", "serial", or "ble"
+  transport: tcp
+
+  # TCP settings (used when transport=tcp)
+  host: "192.168.1.100"   # pyMC / companion radio IP
+  port: 5000
+
+  # Serial settings (used when transport=serial)
+  # serial_port: "/dev/ttyUSB0"
+  # baud_rate: 115200
+
+  # Enable debug logging for the meshcore protocol
+  debug: false
+
+# ── Home Assistant ───────────────────────────────────────────────
+home_assistant:
+  url: "http://192.168.1.50:8123"
+  token: "eyJhbGciOi...your-long-lived-token-here"
+
+  # Timeout for HA API calls (seconds)
+  request_timeout: 10.0
+
+# ── Allowed senders (by Meshcore Ed25519 public key) ─────────────
+# Only DMs from these public keys will be processed.
+# Unauthorized senders get a reply with their prefix so you can
+# add them here.
+allowlist:
+  - pubkey: "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2"
+    name: "your-phone"
+
+# ── Tuning ───────────────────────────────────────────────────────
+# Max characters in DM reply (Meshcore messages are ~200-250 chars)
+dm_reply_max_chars: 200

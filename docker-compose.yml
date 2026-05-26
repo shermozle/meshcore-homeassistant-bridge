@@ -1,0 +1,19 @@
+services:
+  meshcore-ha-bridge:
+    build: .
+    container_name: meshcore-ha-bridge
+    restart: unless-stopped
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    # --- Networking ---
+    # The bridge needs to reach:
+    #   1. pyMC_Repeater's CompanionFrameServer on TCP port 5000
+    #   2. Home Assistant on port 8123
+    #
+    # If pyMC_Repeater runs in its own container, put both on the same
+    # Docker network and use the container name as the host:
+    #   networks:
+    #     - meshcore_net
+    #
+    # If pyMC_Repeater and HA are on the Unraid host directly, use:
+    #   network_mode: host
